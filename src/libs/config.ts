@@ -1,0 +1,1 @@
+export const MORGAN_FARMOT = `:method :url :response-time [:status] \n`;
