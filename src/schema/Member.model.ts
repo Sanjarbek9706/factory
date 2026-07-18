@@ -35,8 +35,6 @@ const memberSchema = new Schema({
 
     memberAddress: {
         type: String,
-        index: {unique: true, sparse: true},
-        required: true,
     },
 
     memberDesc: {
