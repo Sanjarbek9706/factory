@@ -1,6 +1,8 @@
 import express, {Request,Response} from "express";
 import { T } from "../libs/types/common";
 import MemberService from  "../models/Member.service"
+import { MemberInput } from "../libs/types/member";
+import { MemberType } from "../libs/enums/member.enum";
 
 
 const factoryController: T = {};
@@ -40,12 +42,23 @@ factoryController.processLogin = (req: Request, res: Response) => {
     }
 };
 
-factoryController.processSignup = (req: Request, res: Response) => {
+factoryController.processSignup = async (req: Request, res: Response) => {
     try {
         console.log("processSignup")
-        res.send("DONE");
+        console.log("body:", req.body);
+
+
+        const newMember: MemberInput = req.body;
+        newMember.memberType = MemberType.FACTORY;
+
+
+        const memberService = new MemberService();
+        const result = await memberService.processSignup(newMember);
+
+        res.send(result);
     } catch (err) {
         console.log("Error, processSignup:", err);
+        res.send(err);
     }
 };
 
