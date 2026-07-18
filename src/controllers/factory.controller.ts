@@ -31,4 +31,22 @@ factoryController.getSignup = (req: Request, res: Response) => {
     }
 };
 
+factoryController.processLogin = (req: Request, res: Response) => {
+    try {
+        console.log("processLogin")
+        res.send("DONE");
+    } catch (err) {
+        console.log("Error, processLogin:", err);
+    }
+};
+
+factoryController.processSignup = (req: Request, res: Response) => {
+    try {
+        console.log("processSignup")
+        res.send("DONE");
+    } catch (err) {
+        console.log("Error, processSignup:", err);
+    }
+};
+
 export default factoryController;
