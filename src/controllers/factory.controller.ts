@@ -1,4 +1,4 @@
-import express, {request, Request,Response} from "express";
+import express, {NextFunction, request, Request,Response} from "express";
 import { T } from "../libs/types/common";
 import MemberService from  "../models/Member.service"
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
@@ -103,6 +103,20 @@ factoryController.checkAuthSession = async (req: AdminRequest, res: Response) =>
         res.send(err);
     }
 };
+
+factoryController.verifyFactory = (
+    req: AdminRequest, 
+    res: Response,
+     next: NextFunction
+    ) => {
+        if(req.session?.member?.memberType === MemberType.FACTORY) {
+            req.member = req.session.member;
+            next();
+        } else {
+        const message = Message.NOT_AUTHENTICATED; 
+        res.send(`<script> alert ("${message}"); window.location.replace('/admin/login');</script>`);
+    }
+  };
 
 
 
