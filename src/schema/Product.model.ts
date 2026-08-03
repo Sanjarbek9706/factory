@@ -1,5 +1,5 @@
 import mongoose, {Schema} from "mongoose";
-import { ProductCollection, ProductSize, ProductStatus } from "../libs/enums/product.enum";
+import { ProductCollection, ProductSize, ProductStatus, ProductVolume } from "../libs/enums/product.enum";
 
 
 /**-----------PRODUCTSCHEMA MODEL DATA UCHUN-------------**/
@@ -7,13 +7,13 @@ const productSchema = new Schema(
     {
         productStatus: {
             type: String,
-            enum: ProductStatus,
+            enum: Object.values(ProductStatus),
             default: ProductStatus.PAUSE
         },
 
         productCollection: {
             type: String,
-            enum: ProductCollection,
+            enum: Object.values(ProductCollection),
             required: true,
         },
 
@@ -40,8 +40,8 @@ const productSchema = new Schema(
 
         productVolume: {
             type: String,
-            enum: Object.values(ProductSize),
-            default: ProductSize.NEW
+            enum: Object.values(ProductVolume),
+            default: ProductVolume.LOW
         },
 
         productDesc: {
