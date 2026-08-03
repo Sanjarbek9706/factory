@@ -33,6 +33,9 @@ routerAdmin.post("/product/:id",
     productController.updateChosenProduct);
 
 /*********** User ***********/
+routerAdmin.get("/user/all",
+     factoryController.verifyFactory, 
+     factoryController.getUsers);
 
 
 export default routerAdmin;
