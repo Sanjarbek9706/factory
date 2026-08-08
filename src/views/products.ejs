@@ -29,7 +29,7 @@
       <div class="board">
         <div class="dishes-table">
           <span class="new-dish-txt" style="margin-bottom: 30px">
-            RESTAURANT MENU
+            FACTORY MENU
           </span>
           <table class="table table-bordered table-hover">
             <thead class="thead-light">
@@ -37,35 +37,93 @@
                 <th scope="col">T/r</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Product Type</th>
-                <th scope="col">Product Volume</th>
+                <th scope="col">Product Size/Volume</th>
                 <th scope="col">Product Price</th>
                 <th scope="col">Product Left Count</th>
                 <th scope="col">Status</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
-            <!--  LOOP PRODUCTS: START  -->
+
+            <!-- LOOP PRODUCTS: START -->
+            <tbody style="background-color: white">
               <% products.map(function(value, key) { %>
-                <tr>
-                  <tbody style="background-color: white">
+                <tr id="product-row-<%= value._id %>">
                   <td><%= key + 1 %></td>
-                  <td><%= value.productName %></td>
-                  <td><%= value.productCollection %></td>
-                  <td><%= value.productCollection === 'DRINK' ? value.productVolume : value.productSize %></td>
-                  <td><%= value.productPrice %></td>
-                  <td><%= value.productLeftCount %></td>
+                  
+                  <!-- Name Input -->
                   <td>
-                    <select class="spec-select new-product-status" id="<%= value._id %>">
+                    <input 
+                      type="text" 
+                      class="form-control form-control-sm product-name-input" 
+                      value="<%= value.productName %>" 
+                    />
+                  </td>
+
+                  <!-- Type Select -->
+                  <td>
+                    <select class="spec-select product-collection-input">
+                      <option value="신제품" <%= value.productCollection === '신제품' ? 'selected' : '' %>>신제품</option>
+                      <option value="인기제품" <%= value.productCollection === '인기제품' ? 'selected' : '' %>>인기제품</option>
+                      <option value="영농부산물 처리기" <%= value.productCollection === '영농부산물 처리기' ? 'selected' : '' %>>영농부산물 처리기</option>
+                      <option value="트랙터 연동 제초기" <%= value.productCollection === '트랙터 연동 제초기' ? 'selected' : '' %>>트랙터 연동 제초기</option>
+                      <option value="OTHER" <%= value.productCollection === 'OTHER' ? 'selected' : '' %>>OTHER</option>
+                    </select>
+                  </td>
+
+                  <!-- Size / Volume Input -->
+                  <td>
+                    <input 
+                      type="text" 
+                      class="form-control form-control-sm product-size-input" 
+                      value="<%= value.productCollection === 'DRINK' ? value.productVolume : value.productSize %>" 
+                    />
+                  </td>
+
+                  <!-- Price Input -->
+                  <td>
+                    <input 
+                      type="number" 
+                      class="form-control form-control-sm product-price-input" 
+                      value="<%= value.productPrice %>" 
+                      style="width: 90px; margin: 0 auto;"
+                    />
+                  </td>
+
+                  <!-- Left Count Input -->
+                  <td>
+                    <input 
+                      type="number" 
+                      class="form-control form-control-sm product-left-count-input" 
+                      value="<%= value.productLeftCount %>" 
+                      style="width: 80px; margin: 0 auto;"
+                    />
+                  </td>
+
+                  <!-- Status Select -->
+                  <td>
+                    <select class="spec-select product-status-input">
                       <option value="PAUSE" <%= value.productStatus === 'PAUSE' ? 'selected' : '' %>>PAUSE</option>
                       <option value="PROCESS" <%= value.productStatus === 'PROCESS' ? 'selected' : '' %>>PROCESS</option>
                       <option value="DELETE" <%= value.productStatus === 'DELETE' ? 'selected' : '' %>>DELETE</option>
                     </select>
                   </td>
+
+                  <!-- Save / Update Button -->
+                  <td>
+                    <button 
+                      class="btn btn-sm btn-success update-product-btn" 
+                      data-id="<%= value._id %>"
+                    >
+                      Save
+                    </button>
+                  </td>
                 </tr>
-                </tbody>
               <% }) %>
+            </tbody>
+            <!-- LOOP PRODUCTS: END -->
           </table>
-            <!--  LOOP PRODUCTS: END  -->
-          </table>
+
           <div
             class="long-input"
             style="align-items: flex-end; margin-bottom: 25px"
@@ -75,8 +133,9 @@
             </button>
           </div>
         </div>
+
         <form
-        onsubmit="return validateForm()"
+          onsubmit="return validateForm()"
           action="/admin/product/create"
           method="POST"
           class="dish-container"
@@ -85,6 +144,7 @@
           <div class="long-input" style="display: flex; align-items: center">
             <span class="new-dish-txt">NEW PRODUCT DETAIL</span>
           </div>
+
           <div class="login-input-frame">
             <div class="long-input">
               <label>Product Name</label>
@@ -102,6 +162,7 @@
               hidden
             />
           </div>
+
           <div class="half-input-frame">
             <div class="half-input">
               <label>Product Price</label>
@@ -122,14 +183,15 @@
               />
             </div>
           </div>
+
           <div class="half-input-frame">
             <div class="half-input">
               <label>Product Type</label>
               <select class="product-collection" name="productCollection">
-                <option value="DISH" selected>Dish</option>
-                <option value="SALAD">Salad</option>
-                <option value="DESSERT">Dessert</option>
-                <option value="DRINK">Drink</option>
+                <option value="신제품" selected>신제품</option>
+                <option value="인기제품">인기제품</option>
+                <option value="영농부산물 처리기">영농부산물 처리기</option>
+                <option value="트랙터 연동 제초기">트랙터 연동 제초기</option>
                 <option value="OTHER">Other</option>
               </select>
             </div>
@@ -137,24 +199,28 @@
             <div class="half-input" id="product-collection">
               <label>Dish Volume</label>
               <select class="product-size" name="productSize">
-                <option value="SMALL">Small</option>
-                <option value="NORMAL" selected>Normal</option>
-                <option value="LARGE">Large</option>
-                <option value="SET">Set</option>
+                <option value="소형">소형</option>
+                <option value="중형" selected>중형</option>
+                <option value="대형">대형</option>
+                <option value="신제폼">신제폼</option>
               </select>
             </div>
 
             <div class="half-input" id="product-volume" style="display: none">
-              <label>Drink Volume</label>
-              <select class="product-volume" name="productVolume">
-                <option value="0.5">0,5 liters</option>
-                <option value="1" selected>1 liters</option>
-                <option value="1.2">1,2 liters</option>
-                <option value="1.5">1,5 liters</option>
-                <option value="2">2 liters</option>
+              <label>Product Volume</label>
+              <select class="product-volume" name="productVolume" disabled>
+                <option value="15">15 TRC</option>
+                <option value="18" selected>18 TRC</option>
+                <option value="23">23 TRC</option>
+                <option value="20">20 TRC</option>
+                <option value="210">210 TRC</option>
+                <option value="350">350 TRC</option>
+                <option value="350S">350S TRC</option>
+                <option value="600">600 대형</option>
               </select>
             </div>
           </div>
+
           <div class="long-input">
             <label>Product Description</label>
             <textarea name="productDesc" class="product-desc"></textarea>
@@ -164,10 +230,10 @@
             <label>Product Images</label>
             <div class="media-frame">
               <div class="upload-img-box">
-                <img src="/img/upload.svg" class="1" id="image-section-1" />
+                <img src="/img/upload.svg" id="image-section-1" />
                 <input
                   type="file"
-                  id="file"
+                  id="file-1"
                   name="productImages"
                   class="image-one"
                   required
@@ -175,51 +241,50 @@
                 />
               </div>
               <div class="upload-img-box">
-                <img src="/img/upload.svg" class="2" id="image-section-2" />
+                <img src="/img/upload.svg" id="image-section-2" />
                 <input
                   type="file"
-                  id="file"
+                  id="file-2"
                   name="productImages"
                   class="image-two"
                   onchange="previewFileHandler(this, 2)"
                 />
               </div>
               <div class="upload-img-box">
-                <img src="/img/upload.svg" class="3" id="image-section-3" />
+                <img src="/img/upload.svg" id="image-section-3" />
                 <input
                   type="file"
-                  id="file"
+                  id="file-3"
                   name="productImages"
                   class="image-three"
                   onchange="previewFileHandler(this, 3)"
                 />
               </div>
               <div class="upload-img-box">
-                <img src="/img/upload.svg" class="4" id="image-section-4" />
+                <img src="/img/upload.svg" id="image-section-4" />
                 <input
                   type="file"
-                  id="file"
+                  id="file-4"
                   name="productImages"
                   class="image-four"
                   onchange="previewFileHandler(this, 4)"
                 />
               </div>
               <div class="upload-img-box">
-                <img src="/img/upload.svg" class="5" id="image-section-5" />
+                <img src="/img/upload.svg" id="image-section-5" />
                 <input
                   type="file"
-                  id="file"
+                  id="file-5"
                   name="productImages"
                   class="image-five"
                   onchange="previewFileHandler(this, 5)"
                 />
               </div>
-              <input name="restaurantIid" class="restaurant-id" hidden />
             </div>
           </div>
 
           <div class="operation-buttons">
-            <button class="btn btn-danger" id="cancel-btn">Cancel</button>
+            <button type="button" class="btn btn-danger" id="cancel-btn">Cancel</button>
             <button type="submit" class="btn btn-primary" id="create-btn">
               Create
             </button>

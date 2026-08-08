@@ -58,26 +58,61 @@
                 <th scope="col">Name</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Status</th>
+                <th scope="col" style="text-align: center">Action</th>
               </tr>
             </thead>
-            <!--  LOOP PRODUCTS: START  -->
-
-            <% users.map(function(value, index) { %>
-            <tbody style="background: white">
-              <td><%= index + 1 %></td>
-              <td><%= value.memberNick %></td>
-              <td><%= value.memberPhone %></td>
-              <td style="width: 13%">
-                <select class="spec-select member-status" id="<%= value._id %>">
-                  <option value="ACTIVE" <%= value.memberStatus === "ACTIVE" ? "selected" : "" %>>ACTIVE</option>
-                  <option value="BLOCK" <%= value.memberStatus === "BLOCK" ? "selected" : "" %>>BLOCK</option>
-                  <option value="DELETE" <%= value.memberStatus === "DELETE" ? "selected" : "" %>>DELETE</option>
-                </select>
-              </td>
-            </tbody>
-            <% }) %>
             
-            <!--  LOOP PRODUCTS: END  -->
+            <tbody style="background: transparent">
+              <!--  LOOP USERS: START  -->
+              <% users.map(function(value, index) { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                
+                <!-- Name input -->
+                <td>
+                  <input
+                    type="text"
+                    class="form-control member-nick"
+                    id="nick-<%= value._id %>"
+                    value="<%= value.memberNick %>"
+                    style="background: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3);"
+                  />
+                </td>
+
+                <!-- Phone input -->
+                <td>
+                  <input
+                    type="text"
+                    class="form-control member-phone"
+                    id="phone-<%= value._id %>"
+                    value="<%= value.memberPhone %>"
+                    style="background: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3);"
+                  />
+                </td>
+
+                <!-- Status Select -->
+                <td style="width: 15%">
+                  <select class="spec-select member-status" id="status-<%= value._id %>">
+                    <option value="ACTIVE" <%= value.memberStatus === "ACTIVE" ? "selected" : "" %>>ACTIVE</option>
+                    <option value="BLOCK" <%= value.memberStatus === "BLOCK" ? "selected" : "" %>>BLOCK</option>
+                    <option value="DELETE" <%= value.memberStatus === "DELETE" ? "selected" : "" %>>DELETE</option>
+                  </select>
+                </td>
+
+                <!-- Save Button -->
+                <td style="text-align: center; width: 10%">
+                  <button
+                    class="btn btn-sm btn-primary update-user-btn"
+                    data-id="<%= value._id %>"
+                    style="padding: 2px 12px;"
+                  >
+                    Save
+                  </button>
+                </td>
+              </tr>
+              <% }) %>
+              <!--  LOOP USERS: END  -->
+            </tbody>
           </table>
         </div>
       </div>
