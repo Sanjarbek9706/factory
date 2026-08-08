@@ -1,6 +1,56 @@
 <%- include('includes/header') %>
-<body>
-    <div class="farmot1">Test</div>
-</body>
-<%-  include('includes/footer') %>
 
+<link rel="stylesheet" type="text/css" href="/css/home.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"></script>
+
+<body>
+  <div class="home-container">
+    <div class="navigation-menu">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="/admin">Home</a>
+        </li>
+        <% if(!member) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/signup">Signup</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/login">Login</a>
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/product/all">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/user/all">Users</a>
+        </li>
+        <li
+          class="nav-item"
+          onclick="return confirm('Do you want to logout?')"
+        >
+          <a class="nav-link" href="/admin/logout">Logout</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+
+    <div class="animation-frame">
+      <div class="animation-wrapper">
+        <div class="sphere-animation">
+          <!-- Logotip Vektori (Kattalashtirildi va aylanish uchun tayyorlandi) -->
+          <svg class="custom-logo" viewBox="0 0 500 500">
+            <g fill="#E31E24" class="logo-spinner">
+              <path d="M 250 50 L 370 120 L 370 200 L 320 170 L 320 135 L 250 95 L 195 125 L 195 240 L 235 260 L 235 190 L 250 180 Z" />
+              <path d="M 250 50 L 370 120 L 370 200 L 320 170 L 320 135 L 250 95 L 195 125 L 195 240 L 235 260 L 235 190 L 250 180 Z" transform="rotate(120 250 250)" />
+              <path d="M 250 50 L 370 120 L 370 200 L 320 170 L 320 135 L 250 95 L 195 125 L 195 240 L 235 260 L 235 190 L 250 180 Z" transform="rotate(240 250 250)" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/js/home.js"></script>
+</body>
+
+<%- include('includes/footer') %>

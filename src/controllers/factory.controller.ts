@@ -37,7 +37,7 @@ factoryController.getLogin = (req: Request, res: Response) => {
         res.redirect("/admin");
     }
 };
-
+ 
 
 factoryController.processSignup = async (req: AdminRequest, res: Response) => {
     try {
@@ -58,7 +58,7 @@ factoryController.processSignup = async (req: AdminRequest, res: Response) => {
     } catch (err) {
         console.log("Error, processSignup:", err);
          const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
-        res.send(`<script> alert("${message}"); window.location.replace('admin/signup') </script>`);
+        res.send(`<script> alert("${message}"); window.location.replace('/admin/signup') </script>`);
     }
 };
 
@@ -77,7 +77,7 @@ factoryController.processLogin = async (req: AdminRequest, res: Response) => {
     } catch (err) {
         console.log("Error, processLogin:", err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
-        res.send(`<script> alert("${message}"); window.location.replace('admin/login') </script>`);
+        res.send(`<script> alert("${message}"); window.location.replace('/admin/login') </script>`);
     }
 };
 

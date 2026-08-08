@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", Arial, sans-serif;
+
+  /* Zavod orqa foni */
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../img/factory.jpg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.login-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Login blokining eni oshirildi */
+.login-frame {
+  width: 150%;
+  max-width: 750px; /* Eni 500px dan 750px ga kengaytirildi */
+  background: rgba(30, 22, 22, 0.88);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 55px 70px; /* Ichki bo'shliqlar ham kengaytirildi */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* Sarlavha va matnlar */
+.login-top {
+  margin-bottom: 30px;
+}
+
+.login-top span {
+  font-size: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.login-top div,
+.login-top p {
+  font-size: 15px;
+  color: #d1d5db;
+  margin: 6px 0;
+}
+
+/* Linklar */
+.link-highlight {
+  color: #e57373 !important;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.link-highlight:hover {
+  color: #ff8a80 !important;
+  text-decoration: underline;
+}
+
+/* Inputlar */
+.login-input-frame {
+  margin-bottom: 24px;
+}
+
+.login-up-frame {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-up-frame label {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #e5e7eb;
+}
+
+.login-up-frame input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.login-up-frame input::placeholder {
+  color: #9ca3af;
+  opacity: 0.8;
+}
+
+.login-up-frame input:focus {
+  border-color: #c62828;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 12px rgba(198, 40, 40, 0.4);
+}
+
+/* Tugma */
+.login-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: #b71c1c;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(183, 28, 28, 0.4);
+}
+
+.login-btn:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
+}
+
+/* Mobil moslashuv */
+@media (max-width: 768px) {
+  .login-frame {
+    max-width: 100%;
+    padding: 35px 25px;
+  }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Fon doirasi -->
+  <circle cx="256" cy="256" r="256" fill="#4D8CFA"/>
+  
+  <!-- Bulut shakli -->
+  <path d="M 365 380 C 418 380 458 338 458 286 C 458 238 423 198 376 192 C 363 128 308 80 240 80 C 180 80 130 116 108 168 C 65 178 34 218 34 266 C 34 329 85 380 148 380 Z" fill="#FFFFFF"/>
+  
+  <!-- Yuklash ko'rsatkichi (Arrow) -->
+  <path d="M 256 182 L 314 264 C 320 272 314 282 304 282 H 280 V 318 C 280 328 272 336 262 336 H 250 C 240 336 232 328 232 318 V 282 H 208 C 198 282 192 272 198 264 Z" fill="#1360F6"/>
+</svg>

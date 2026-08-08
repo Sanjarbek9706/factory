@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/factory.jpg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.users-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+/* Navigatsiya menyusi */
+.navigation-menu {
+  background: rgba(18, 30, 18, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.navigation-menu .nav-link {
+  color: #d1e7dd !important;
+  font-weight: 500;
+  font-size: 16px;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+}
+
+.navigation-menu .nav-link:hover,
+.navigation-menu .nav-link.active {
+  color: #81c784 !important;
+  font-weight: 700;
+}
+
+/* Asosiy ramka */
+.users-frame {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(18, 30, 18, 0.82);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.header-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #81c784;
+  display: block;
+}
+
+/* Jadval (Table) Stili */
+.user-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  color: #ffffff !important;
+  margin-top: 20px;
+}
+
+.table thead th {
+  background-color: rgba(46, 125, 50, 0.6) !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-size: 16px;
+  padding: 12px;
+}
+
+.table tbody {
+  background: rgba(255, 255, 255, 0.08) !important;
+  transition: background 0.3s;
+}
+
+.table tbody:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+.table td {
+  vertical-align: middle !important;
+  color: #e8f5e9 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  font-size: 15px;
+  padding: 12px;
+}
+
+/* Status (Select box) */
+.spec-select {
+  background: rgba(20, 35, 20, 0.9);
+  color: #81c784;
+  border: 1px solid #66bb6a;
+  padding: 6px 10px;
+  border-radius: 6px;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.spec-select:focus {
+  box-shadow: 0 0 10px rgba(102, 187, 106, 0.5);
+}
